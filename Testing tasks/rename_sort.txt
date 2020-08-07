@@ -1,0 +1,11 @@
+#!/bin/bash
+[ $# -ne 1 ] && echo "Usage: $0 <directory>" 1>&2 && exit 1
+DIRECTORY="./$1"
+i=1
+ls -S "$DIRECTORY" | while IFS= read -r line
+do
+	#echo "$line"
+	NEWNAME=$(printf "%0.3d_$line" $i)
+	mv "$DIRECTORY/$line" "$DIRECTORY/$NEWNAME"
+	i=$((i + 1))
+done
