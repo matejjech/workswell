@@ -8,7 +8,7 @@ ColorPalette::ColorPalette()
 QVector<QRgb> ColorPalette::loadPalette(QString fileName)
 {
     QVector<QRgb> palette;
-    QString path = "./palettes/" + fileName + ".plt";
+    QString path = "./palettes/" + fileName;
     QFile paletteFile(path);
     if (paletteFile.open(QIODevice::ReadOnly))
     {

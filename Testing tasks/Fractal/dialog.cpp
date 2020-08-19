@@ -9,7 +9,11 @@ Dialog::Dialog(QWidget *parent) :
 
     connect(ui->closeBtn, &QPushButton::clicked, this, &Dialog::closeClick);
     connect(ui->applyBtn, &QPushButton::clicked, this, &Dialog::applyClick);
-
+    QDir paletteDir = QDir("./palettes");
+    QStringList paletteNames = paletteDir.entryList();
+    paletteNames.removeAll(".");
+    paletteNames.removeAll("..");
+    ui->paletteBox->addItems(paletteNames);
     setWindowTitle("Settings");
 }
 
@@ -36,10 +40,13 @@ void Dialog::applyClick()
 {
     bool isInt1, isInt2;
     width = ui->widthEdit->toPlainText().toInt(&isInt1);
-    if (!isInt1) ui->widthEdit->setText("");
     height = ui->heightEdit->toPlainText().toInt(&isInt2);
-    if (!isInt2) ui->heightEdit->setText("");
-    if (!isInt1 || !isInt2) return;
-    paletteName = ui->paletteEdit->toPlainText();
+    if (!isInt1 || !isInt2 || width < 100 || height < 100)
+    {
+        ui->widthEdit->setText("");
+        ui->heightEdit->setText("");
+        return;
+    }
+    paletteName = ui->paletteBox->currentText();
     emit sendSettings();
 }

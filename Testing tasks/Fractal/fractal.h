@@ -36,7 +36,7 @@ private:
     RenderThread thread;
     Dialog settings;
     QSize renderSize = QSize(700, 600);
-    QString paletteName = "Iron1";
+    QString paletteName = "Iron1.plt";
     double centerX = -0.7;
     double centerY = -0.04;
     double pixmapScale = 0.004;

@@ -59,9 +59,6 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="1" colspan="2">
-     <widget class="QTextEdit" name="paletteEdit"/>
-    </item>
     <item row="3" column="0" colspan="2">
      <widget class="QPushButton" name="applyBtn">
       <property name="text">
@@ -75,6 +72,9 @@
        <string>Close</string>
       </property>
      </widget>
+    </item>
+    <item row="2" column="1" colspan="2">
+     <widget class="QComboBox" name="paletteBox"/>
     </item>
    </layout>
   </widget>
